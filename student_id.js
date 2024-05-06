@@ -109,7 +109,7 @@ const generatePDF = async (name, Student_Id, Course, Course_Subject, uploadedIma
     const { PDFDocument } = PDFLib;
 
     // Fetching the certificate into website
-    const exBytes = await fetch("./CMC_ID_Card.pdf").then((res) => {
+    const exBytes = await fetch("./cmc_id_latest.pdf").then((res) => {
         return res.arrayBuffer();
     });
 
@@ -122,12 +122,17 @@ const generatePDF = async (name, Student_Id, Course, Course_Subject, uploadedIma
         return res.arrayBuffer();
     });
 
+    const exFontCourse = await fetch("./PoetsenOne-Regular.ttf").then((res) => {
+        return res.arrayBuffer();
+    });
+
 
     const pdfDoc = await PDFDocument.load(exBytes);
 
     pdfDoc.registerFontkit(fontkit);
     const myFont = await pdfDoc.embedFont(exFont);
     const myFontName = await pdfDoc.embedFont(exFontName);
+    const myFontCourse = await pdfDoc.embedFont(exFontCourse);
     // const myFontFather = await pdfDoc.embedFont(exFontFather);
 
     const pages = pdfDoc.getPages();
@@ -144,7 +149,7 @@ const generatePDF = async (name, Student_Id, Course, Course_Subject, uploadedIma
     // Draw text and uploaded image on the certificate
     firstPg.drawText(name, {
         x: 242,
-        y: 246,
+        y: 252,
         color: rgb(1, 0, 0), // Red color
         size: 30,
         weight: 200,
@@ -157,7 +162,7 @@ const generatePDF = async (name, Student_Id, Course, Course_Subject, uploadedIma
 
     firstPg.drawText(Student_Id, {
         x: 242,
-        y: 150,
+        y: 175,
         // color: rgb(255,255,255),
         color:rgb(1, 0, 0), // Red color,
         size: 30,
@@ -171,11 +176,11 @@ const generatePDF = async (name, Student_Id, Course, Course_Subject, uploadedIma
 
     
     firstPg.drawText(Course, {
-        x: 300,
+        x: 315,
         y: 537,
-        size: 40,
+        size: 35,
         weight: 700,
-        font: myFontName,
+        font: myFontCourse,
         // rotate: degrees(90), // Angle should be in radians, not degrees
         // rotateOrigin: [315, 265] // Adjust rotation center to the text position
     });
@@ -187,12 +192,12 @@ const generatePDF = async (name, Student_Id, Course, Course_Subject, uploadedIma
     // const awardedToX = (firstPg.getWidth() - awardedToWidth) / 2;
     
     firstPg.drawText(Course_Subject, {
-        x: 340,
-        y: 470,
+        x: 350,
+        y: 417,
         size: 40,
         weight: 500,
         font: myFontName,
-        color:rgb(0.188, 0.851, 0.192),
+        color:rgb(1, 1, 1) //color white
         // rotate: degrees(90),
         // rotateOrigin: [315, 265]
     });
@@ -211,8 +216,8 @@ const generatePDF = async (name, Student_Id, Course, Course_Subject, uploadedIma
     
 
     firstPg.drawImage(uploadedImage, {
-        x: firstPg.getWidth() / 2 - uploadedImageDims.width / 2 - 114,
-        y: firstPg.getHeight() / 2 - uploadedImageDims.height / 2 + 75,
+        x: firstPg.getWidth() / 2 - uploadedImageDims.width / 2 - 122,
+        y: firstPg.getHeight() / 2 - uploadedImageDims.height / 2 + 69,
         width: uploadedImageDims.width,
         height: uploadedImageDims.height,
         // rotate: degrees(90), // Angle should be in radians, not degrees
