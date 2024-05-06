@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Certificate of complition</title>
+    <link rel="stylesheet" href="id_card.css">
+</head>
+<body>
+    <!-- <iframe src="" id="mypdf" height="400px" width="400px" frameborder="0"></iframe> -->
+    <header>
+
+        <div class="container">
+
+            <img src="./IMG-20240128-WA0002.jpg" alt="Micro" width="95%" >
+            <br>
+            <br>
+        
+            <h3>Get your Student Id Card</h3>
+            <br>
+            <!-- <br> -->
+
+
+            <!-- <a href="https://micro75.com/" target="_blank"><h1>MICRO INFOTECH</h1></a> -->
+            <br>
+
+            <main>
+                <!-- name input -->
+                <label for="name">Type Student Name </label>
+
+                <input required type="text" id="name" name="Name" autocomplete="name">
+
+                <!-- father name input -->
+                <label for="Student_Id">Type Student ID</label>
+
+                <input required type="text" id="Student_Id" name="student_id" autocomplete="Student_Id">
+
+                <!-- Issue Date input -->
+                <label for="Course">Type Course</label>
+
+                <input required type="text" id="Course" name="course" autocomplete="Course">
+
+                <!-- awarded to -->
+                <label for="Course_Subject">Type Course Subject</label>
+
+                <input required type="text" id="Course_Subject" name="course_subject" autocomplete="Course_Subject">
+
+                <!-- student image -->
+                <label for="image">Upload Student Image in (600x750 pixel)</label>
+
+                <input type="file" id="image" accept="image/jpeg, image/png">
+
+
+                <!-- <input type="file" accept="image/jpeg, image/png" id="input-file"> -->
+
+                <button id="submit">Get Certificate</button>
+
+            </main>
+        </div>
+
+    </header>
+    <script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
+
+    <script src="https://unpkg.com/@pdf-lib/fontkit"></script>
+    <script src="./id_file_saver.js"></script>
+    <script src="./student_id.js"></script>
+    
+</body>
+</html>
