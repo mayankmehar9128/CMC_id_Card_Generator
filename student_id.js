@@ -109,7 +109,7 @@ const generatePDF = async (name, Student_Id, Course, Course_Subject, uploadedIma
     const { PDFDocument } = PDFLib;
 
     // Fetching the certificate into website
-    const exBytes = await fetch("./cmc_id_latest.pdf").then((res) => {
+    const exBytes = await fetch("./CMC_id_card_scanner.pdf").then((res) => {
         return res.arrayBuffer();
     });
 
